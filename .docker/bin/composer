@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+. "./init-script"
+
+echo "Running composer on ${project_name}_php_1 container..."
+docker exec \
+    -it \
+    ${project_name}_php_1 composer "$@"

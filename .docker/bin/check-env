@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+. "./init-script"
+
+echo "Checking environment for ${project_name^^} project..."
+
+# Check .env file
+
+if [ -f "../.env" ]; then
+    . "../.env"
+else
+    echo ".env file not found."
+    echo "Errors were found. Aborting..."
+    exit 1
+fi
+
+# Check env vars
+
+declare -a env_vars=(
+    # docker
+    "DEV_COMPOSER_HOME"
+    "RABBITMQ_DEFAULT_PASS"
+    "RABBITMQ_DEFAULT_USER"
+    "SYSTEM_USER_PHP"
+)
+
+env_checks=true
+
+for i in "${env_vars[@]}"; do
+    if [ -z ${!i} ]; then
+        echo "Variable ${i} unset."
+        env_checks=false
+    fi
+done
+
+if [ "$env_checks" = false ]; then
+    echo "Errors were found. Aborting..."
+    exit 1
+fi
+
+echo "Environment for ${project_name^^} project checked."

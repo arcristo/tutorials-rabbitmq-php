@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+. "./check-env"
+
+echo "Starting docker services for ${project_name^^} project..."
+cd ..
+docker-compose \
+    -p ${project_name} \
+    up -d "$@"

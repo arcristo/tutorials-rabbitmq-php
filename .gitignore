@@ -1,0 +1,10 @@
+# docker
+.env
+
+# phpstorm
+.idea/*.iws
+.idea/tasks.xml
+.idea/workspace.xml
+
+# app
+/vendor/

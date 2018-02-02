@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+    php:
+        image: rabbitmq_php
+        build:
+            context: ./
+            dockerfile: ./services/php/Dockerfile
+            args:
+                SYSTEM_USER_PHP: ${SYSTEM_USER_PHP}
+        restart: always
+        links:
+            - rabbitmq
+        volumes:
+            # folders
+            - ..:/usr/src/myapp
+            - ${DEV_COMPOSER_HOME}:/composer
+            # files
+            - ./services/php/php.ini:/usr/local/etc/php/php.ini
+        env_file: .env
+
+    rabbitmq:
+        image: rabbitmq
+        restart: always
+        ports:
+            - 5672:5672
+        env_file: .env

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+. "./init-script"
+
+echo "Running bash on ${project_name}_rabbitmq_1 container..."
+docker exec \
+    -it \
+    ${project_name}_rabbitmq_1 bash "$@"
