@@ -61,9 +61,9 @@ Install the dependencies via composer:
 To run the scripts on the PHP container use the following:
 
 ```bash
-./.docker/bin/receive
+./bin/receive
 ```
 
 ```bash
-./.docker/bin/send
+./bin/send
 ```
