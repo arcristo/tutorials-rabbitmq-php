@@ -4,27 +4,29 @@ This project provides an environment to follow the
 [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)
 using PHP. The environment is set up using Docker and Docker Compose.
 
-## Requisites
+### Requisites
 
 - [Docker](https://docs.docker.com/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Project structure
+### Project structure
 
 Folder | Description
 ------------ | -------------
 .docker | Contains scripts and config files to build the environment for the project
+bin | Contains wrappers for running the scripts on the container
+src | Contains the php source files
 
-## Installation
+### Installation
 
-### Prepare the environment
+#### Prepare the environment
 
 Create the .env file using .env.dist as template and set the variables:
 
 Variable | Description
 ------------ | -------------
 DEV_COMPOSER_HOME | The local folder where to keep the composer files
-RABBITMQ_DEFAULT_PASS | The default password for RabbitMQ 
+RABBITMQ_DEFAULT_PASS | The default password for RabbitMQ
 RABBITMQ_DEFAULT_USER | The default user for RabbitMQ
 SYSTEM_USER_PHP | The user which runs the commands on the PHP container
 
@@ -46,10 +48,22 @@ To stop the containers run:
 ./.docker/bin/docker-down
 ```
 
-### Install the dependencies
+#### Install the dependencies
 
 Install the dependencies via composer:
 
 ```bash
 ./.docker/bin/composer install
+```
+
+#### Run the scripts
+
+To run the scripts on the PHP container use the following:
+
+```bash
+./.docker/bin/receive
+```
+
+```bash
+./.docker/bin/send
 ```
