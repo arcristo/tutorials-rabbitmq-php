@@ -1,8 +1,7 @@
 {
-    "name": "rabbitmq/tutorials",
+    "name": "arcristo/tutorials-rabbitmq-php",
     "type": "project",
     "require": {
         "php-amqplib/php-amqplib": ">=2.6.1"
-    },
-    "license": "MIT"
+    }
 }
